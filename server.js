@@ -1,11 +1,11 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const { open } = require('sqlite');
 const app = express();
-const port = 3000;
-
+const port = process.env.PORT || 3000;
 const RIOT_API_KEY = 'RGAPI-32333443-3935-4d88-bfa2-be58a8aa2e1c';
 
 app.use(cors());
@@ -103,4 +103,5 @@ app.get('/summoners', async (req, res) => {
       res.status(500).json({ error: 'Error fetching data from database' });
     }
   });
+  
   
